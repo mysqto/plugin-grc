@@ -1,4 +1,5 @@
 function grc.wrap -a executable
+
   set executable $argv[1]
   
   if test (count $argv) -gt 1
@@ -10,5 +11,9 @@ function grc.wrap -a executable
   set optionsvariable "grcplugin_"$executable
   set options $$optionsvariable
 
-  command grc -es --colour=auto $executable $options $arguments
+  if isatty 1
+    command grc --colour=auto $executable $options $arguments
+  else
+    eval command $executable $argv
+  end
 end
