@@ -14,6 +14,6 @@ function grc.wrap -a executable
   if isatty 1
     command grc --colour=auto $executable $options $arguments
   else
-    eval command $executable $argv
+    eval command $executable $arguments
   end
 end
